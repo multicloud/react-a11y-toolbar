@@ -1,0 +1,52 @@
+{
+  "name": "@multicloud-io/react-a11y-toolbar",
+  "version": "0.1.0",
+  "description": "A fully-featured, customizable accessibility toolbar for React applications",
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "react",
+    "toolbar",
+    "wcag"
+  ],
+  "license": "AGPL-3.0-only",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./style.css": "./dist/accessibility.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:demo": "tsup --config tsup.config.ts && npx @tailwindcss/cli -i demo/tailwind-input.css -o demo/tailwind.css && cp src/accessibility.css demo/accessibility-6GGSRURN.css",
+    "dev": "tsup --watch",
+    "check:licenses": "node scripts/check-licenses.js",
+    "prepublishOnly": "npm run check:licenses && npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.10"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "playwright": "^1.59.1",
+    "react": "^19",
+    "react-dom": "^19",
+    "tailwindcss": "^4.2.3",
+    "tsup": "^8",
+    "typescript": "^5"
+  }
+}

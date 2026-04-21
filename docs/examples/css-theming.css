@@ -1,0 +1,26 @@
+/* Example: Custom CSS theming for @multicloud-io/react-a11y-toolbar */
+
+/* Override accessibility feature colors */
+:root {
+  /* Title highlight (highlightTitles feature) */
+  --a11y-highlight-bg: #fff3cd;
+  --a11y-highlight-color: #1a1a1a;
+
+  /* Link highlight (highlightLinks feature) */
+  --a11y-link-color: #0066cc;
+  --a11y-link-hover-color: #004499;
+
+  /* Screen reader indicators */
+  --a11y-screen-reader-color: #0050aa;
+  --a11y-screen-reader-alt-bg: #fffff0;
+  --a11y-screen-reader-alt-color: #222222;
+  --a11y-screen-reader-alt-border: #999999;
+  --a11y-screen-reader-landmark-bg: #e0ecff;
+
+  /* Reading guide overlay */
+  --a11y-reading-guide-bg: rgba(0, 0, 0, 0.5);
+  --a11y-reading-guide-border: rgba(255, 255, 255, 0.5);
+
+  /* Toolbar scrollbar */
+  --a11y-scrollbar-color: #5a4a18;
+}

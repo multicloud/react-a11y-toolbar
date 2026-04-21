@@ -1,0 +1,147 @@
+├─ @floating-ui/core@1.7.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floating-ui/floating-ui
+│  ├─ publisher: atomiks
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/core
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/core/LICENSE
+├─ @floating-ui/dom@1.7.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floating-ui/floating-ui
+│  ├─ publisher: atomiks
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/dom
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/dom/LICENSE
+├─ @floating-ui/react-dom@2.1.8
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floating-ui/floating-ui
+│  ├─ publisher: atomiks
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/react-dom
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/react-dom/LICENSE
+├─ @floating-ui/react@0.26.28
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floating-ui/floating-ui
+│  ├─ publisher: atomiks
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/react
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/react/LICENSE
+├─ @floating-ui/utils@0.2.11
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floating-ui/floating-ui
+│  ├─ publisher: atomiks
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/utils
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@floating-ui/utils/LICENSE
+├─ @headlessui/react@2.2.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/tailwindlabs/headlessui
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@headlessui/react
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@headlessui/react/LICENSE
+├─ @internationalized/date@3.12.1
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/adobe/react-spectrum/tree/main/packages/@internationalized/date
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@internationalized/date
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@internationalized/date/LICENSE
+├─ @internationalized/number@3.6.6
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/adobe/react-spectrum
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@internationalized/number
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@internationalized/number/LICENSE
+├─ @internationalized/string@3.2.8
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/adobe/react-spectrum
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@internationalized/string
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@internationalized/string/LICENSE
+├─ @react-aria/focus@3.22.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/adobe/react-spectrum
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@react-aria/focus
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@react-aria/focus/LICENSE
+├─ @react-aria/interactions@3.28.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/adobe/react-spectrum
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@react-aria/interactions
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@react-aria/interactions/LICENSE
+├─ @react-types/shared@3.34.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/adobe/react-spectrum
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@react-types/shared
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@react-types/shared/LICENSE
+├─ @swc/helpers@0.5.21
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/swc-project/swc
+│  ├─ publisher: 강동윤
+│  ├─ email: kdy1997.dev@gmail.com
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@swc/helpers
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@swc/helpers/LICENSE
+├─ @tanstack/react-virtual@3.13.24
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/TanStack/virtual
+│  ├─ publisher: Tanner Linsley
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@tanstack/react-virtual
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@tanstack/react-virtual/LICENSE
+├─ @tanstack/virtual-core@3.14.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/TanStack/virtual
+│  ├─ publisher: Tanner Linsley
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@tanstack/virtual-core
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/@tanstack/virtual-core/LICENSE
+├─ aria-hidden@1.2.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/theKashey/aria-hidden
+│  ├─ publisher: Anton Korzunov
+│  ├─ email: thekashey@gmail.com
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/aria-hidden
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/aria-hidden/LICENSE
+├─ clsx@2.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lukeed/clsx
+│  ├─ publisher: Luke Edwards
+│  ├─ email: luke.edwards05@gmail.com
+│  ├─ url: https://lukeed.com
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/clsx
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/clsx/license
+├─ react-a11y-toolbar@0.1.0
+│  ├─ licenses: AGPL-3.0-only
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar
+│  ├─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/LICENSE
+│  └─ noticeFile: /Users/yaron/Projects/react-a11y-toolbar/NOTICE.md
+├─ react-aria@3.48.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/adobe/react-spectrum
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/react-aria
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/react-aria/LICENSE
+├─ react-dom@19.2.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/facebook/react
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/react-dom
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/react-dom/LICENSE
+├─ react-stately@3.46.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/adobe/react-spectrum
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/react-stately
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/react-stately/LICENSE
+├─ react@19.2.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/facebook/react
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/react
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/react/LICENSE
+├─ scheduler@0.27.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/facebook/react
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/scheduler
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/scheduler/LICENSE
+├─ tabbable@6.4.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/focus-trap/tabbable
+│  ├─ publisher: David Clark
+│  ├─ url: http://davidtheclark.com/
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/tabbable
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/tabbable/LICENSE
+├─ tslib@2.8.1
+│  ├─ licenses: 0BSD
+│  ├─ repository: https://github.com/Microsoft/tslib
+│  ├─ publisher: Microsoft Corp.
+│  ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/tslib
+│  └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/tslib/LICENSE.txt
+└─ use-sync-external-store@1.6.0
+   ├─ licenses: MIT
+   ├─ repository: https://github.com/facebook/react
+   ├─ path: /Users/yaron/Projects/react-a11y-toolbar/node_modules/use-sync-external-store
+   └─ licenseFile: /Users/yaron/Projects/react-a11y-toolbar/node_modules/use-sync-external-store/LICENSE
