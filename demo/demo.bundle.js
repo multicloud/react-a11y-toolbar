@@ -14661,6 +14661,7 @@ var Demo = (() => {
       return groups;
     }, []);
     const isRtl = locale === "he";
+    const dir = isRtl ? "rtl" : "ltr";
     if (!mounted) return null;
     return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_jsx_runtime2.Fragment, { children: [
       settings.readingGuide && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
@@ -14676,8 +14677,8 @@ var Demo = (() => {
         {
           onClick: () => setIsOpen(true),
           "aria-label": t11.openMenu,
-          className: `fixed bottom-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-200 hover:scale-105 ${isRtl ? "left-6" : "right-6"} bg-blue-600 text-white hover:bg-blue-700`,
-          children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined text-2xl", "aria-hidden": "true", children: "settings_accessibility" })
+          className: `a11y-trigger-btn a11y-trigger-btn--${dir}`,
+          children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined", style: { fontSize: "1.5rem" }, "aria-hidden": "true", children: "settings_accessibility" })
         }
       ),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
@@ -14685,83 +14686,84 @@ var Demo = (() => {
         {
           open: isOpen,
           onClose: () => setIsOpen(false),
-          className: "relative z-[9999]",
+          style: { position: "relative", zIndex: 9999 },
           children: [
             /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
               Lt,
               {
-                className: "fixed inset-0 bg-black/30",
+                className: "a11y-dialog-backdrop",
+                style: { position: "fixed", inset: 0, background: "rgba(0,0,0,0.3)" },
                 "aria-hidden": "true",
                 onClick: () => setIsOpen(false)
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: `fixed inset-y-0 ${isRtl ? "left-0" : "right-0"} flex`, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: `a11y-dialog-positioner a11y-dialog-positioner--${dir}`, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
               ze,
               {
-                className: `w-full max-w-sm bg-surface-container-lowest shadow-2xl flex flex-col ${isRtl ? "rtl" : ""}`,
-                dir: isRtl ? "rtl" : "ltr",
+                className: "a11y-dialog-panel",
+                dir,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center justify-between p-4 border-b border-outline-variant", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Qe, { className: "text-lg font-headline font-bold text-primary-container", children: t11.title }),
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "a11y-panel-header", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Qe, { as: "h2", className: "a11y-panel-title", children: t11.title }),
                     /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
                       "button",
                       {
                         onClick: () => setIsOpen(false),
                         "aria-label": t11.closeMenu,
-                        className: "p-2 rounded-lg hover:bg-surface-container transition-colors text-on-surface-variant",
+                        className: "a11y-panel-close-btn",
                         children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined", "aria-hidden": "true", children: "close" })
                       }
                     )
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex-1 overflow-y-auto a11y-panel p-4 space-y-6", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("section", { children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h3", { className: "text-xs font-label font-bold uppercase tracking-widest text-on-tertiary-container mb-3", children: t11.profiles }),
-                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "grid grid-cols-2 gap-3", children: profiles.map((profile) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "a11y-panel-body a11y-panel", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("section", { className: "a11y-section", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h3", { className: "a11y-section-heading", children: t11.profiles }),
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "a11y-profiles-grid", children: profiles.map((profile) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
                         "button",
                         {
                           onClick: () => applyProfile(profile.id),
-                          className: `p-3 rounded-lg border transition-all ${activeProfile === profile.id ? "border-tertiary-fixed-dim bg-tertiary-fixed/20" : "border-outline-variant hover:border-tertiary-fixed-dim hover:bg-surface-container"}`,
+                          className: `a11y-profile-btn${activeProfile === profile.id ? " a11y-profile-btn--active" : ""}`,
                           children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined text-xl mb-1 block text-on-tertiary-container", "aria-hidden": "true", children: profile.icon }),
-                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "text-xs font-bold block text-on-surface leading-tight", children: t11[profile.labelKey] }),
-                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "text-[10px] text-on-surface-variant leading-snug block mt-1", children: t11[profile.descKey] })
+                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined a11y-profile-icon", "aria-hidden": "true", children: profile.icon }),
+                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "a11y-profile-label", children: t11[profile.labelKey] }),
+                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "a11y-profile-desc", children: t11[profile.descKey] })
                           ]
                         },
                         profile.id
                       )) })
                     ] }),
-                    featureGroups.map((group) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("section", { children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h3", { className: "text-xs font-label font-bold uppercase tracking-widest text-on-tertiary-container mb-3", children: t11[group.labelKey] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "space-y-2", children: groupedFeatures[group.id].map((feature) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+                    featureGroups.map((group) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("section", { className: "a11y-section", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h3", { className: "a11y-section-heading", children: t11[group.labelKey] }),
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "a11y-feature-list", children: groupedFeatures[group.id].map((feature) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
                         "button",
                         {
                           onClick: () => toggleFeature(feature.id),
                           role: "switch",
                           "aria-checked": settings[feature.id],
-                          className: `w-full flex items-center gap-3 p-3 rounded-lg border transition-all ${settings[feature.id] ? "border-tertiary-fixed-dim bg-tertiary-fixed/20" : "border-transparent hover:bg-surface-container"}`,
+                          className: `a11y-feature-btn${settings[feature.id] ? " a11y-feature-btn--active" : ""}`,
                           children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined text-xl text-on-surface-variant", "aria-hidden": "true", children: feature.icon }),
-                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "text-sm text-on-surface font-medium flex-1", children: t11[feature.labelKey] }),
-                            settings[feature.id] && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined text-lg text-tertiary-fixed-dim", "aria-hidden": "true", children: "check" })
+                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined a11y-feature-icon", "aria-hidden": "true", children: feature.icon }),
+                            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "a11y-feature-label", children: t11[feature.labelKey] }),
+                            settings[feature.id] && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined a11y-feature-check", "aria-hidden": "true", children: "check" })
                           ]
                         },
                         feature.id
                       )) })
                     ] }, group.id)),
-                    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("section", { children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h3", { className: "text-xs font-label font-bold uppercase tracking-widest text-on-tertiary-container mb-3", children: t11.fontSizeLabel }),
-                      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center gap-3", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("section", { className: "a11y-section", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h3", { className: "a11y-section-heading", children: t11.fontSizeLabel }),
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "a11y-font-controls", children: [
                         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
                           "button",
                           {
                             onClick: () => setFontSize(fontSize - FONT_SIZE_STEP),
                             disabled: fontSize <= config.defaultFontSize,
                             "aria-label": t11.decreaseFontSize,
-                            className: "flex-1 flex items-center justify-center p-3 rounded-lg border border-outline-variant hover:bg-surface-container transition-all disabled:opacity-40",
-                            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined text-lg", "aria-hidden": "true", children: "text_decrease" })
+                            className: "a11y-font-btn",
+                            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined", style: { fontSize: "1.125rem" }, "aria-hidden": "true", children: "text_decrease" })
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("span", { className: "text-sm font-label font-bold text-on-surface-variant min-w-[3rem] text-center", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("span", { className: "a11y-font-size-display", children: [
                           Math.round(fontSize * 100),
                           "%"
                         ] }),
@@ -14771,18 +14773,18 @@ var Demo = (() => {
                             onClick: () => setFontSize(fontSize + FONT_SIZE_STEP),
                             disabled: fontSize >= config.maxFontSize,
                             "aria-label": t11.increaseFontSize,
-                            className: "flex-1 flex items-center justify-center p-3 rounded-lg border border-outline-variant hover:bg-surface-container transition-all disabled:opacity-40",
-                            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined text-lg", "aria-hidden": "true", children: "text_increase" })
+                            className: "a11y-font-btn",
+                            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "material-symbols-outlined", style: { fontSize: "1.125rem" }, "aria-hidden": "true", children: "text_increase" })
                           }
                         )
                       ] })
                     ] })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "p-4 border-t border-outline-variant", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "a11y-panel-footer", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
                     "button",
                     {
                       onClick: resetAll,
-                      className: "w-full py-3 rounded-lg border-2 border-on-surface-variant/30 text-on-surface-variant font-label font-bold text-sm uppercase tracking-widest hover:bg-surface-container transition-all",
+                      className: "a11y-reset-btn",
                       children: t11.resetAll
                     }
                   ) })

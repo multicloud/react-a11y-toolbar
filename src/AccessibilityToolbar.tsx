@@ -78,12 +78,10 @@ export function AccessibilityToolbar({ locale = "en", translations, langMap }: A
       if (!el || el === lastEl) return;
       lastEl = el;
       pendingText = getLabel(el);
-      // Only debounce; don't cancel ongoing speech — let it finish naturally
       if (hoverTimer) clearTimeout(hoverTimer);
       hoverTimer = setTimeout(() => {
         if (!synth.speaking) speakNow(pendingText);
         else {
-          // Queue after current utterance ends
           const u = new SpeechSynthesisUtterance(pendingText);
           u.lang = lang;
           u.rate = 1;
@@ -115,6 +113,7 @@ export function AccessibilityToolbar({ locale = "en", translations, langMap }: A
   }, []);
 
   const isRtl = locale === "he";
+  const dir = isRtl ? "rtl" : "ltr";
 
   if (!mounted) return null;
 
@@ -131,11 +130,9 @@ export function AccessibilityToolbar({ locale = "en", translations, langMap }: A
       <button
         onClick={() => setIsOpen(true)}
         aria-label={t.openMenu}
-        className={`fixed bottom-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-200 hover:scale-105 ${
-          isRtl ? "left-6" : "right-6"
-        } bg-blue-600 text-white hover:bg-blue-700`}
+        className={`a11y-trigger-btn a11y-trigger-btn--${dir}`}
       >
-        <span className="material-symbols-outlined text-2xl" aria-hidden="true">
+        <span className="material-symbols-outlined" style={{ fontSize: "1.5rem" }} aria-hidden="true">
           settings_accessibility
         </span>
       </button>
@@ -143,57 +140,50 @@ export function AccessibilityToolbar({ locale = "en", translations, langMap }: A
       <Dialog
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        className="relative z-[9999]"
+        style={{ position: "relative", zIndex: 9999 }}
       >
         <DialogBackdrop
-          className="fixed inset-0 bg-black/30"
+          className="a11y-dialog-backdrop"
+          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.3)" }}
           aria-hidden="true"
           onClick={() => setIsOpen(false)}
         />
 
-        <div className={`fixed inset-y-0 ${isRtl ? "left-0" : "right-0"} flex`}>
+        <div className={`a11y-dialog-positioner a11y-dialog-positioner--${dir}`}>
           <DialogPanel
-            className={`w-full max-w-sm bg-surface-container-lowest shadow-2xl flex flex-col ${
-              isRtl ? "rtl" : ""
-            }`}
-            dir={isRtl ? "rtl" : "ltr"}
+            className="a11y-dialog-panel"
+            dir={dir}
           >
-            <div className="flex items-center justify-between p-4 border-b border-outline-variant">
-              <DialogTitle className="text-lg font-headline font-bold text-primary-container">
+            <div className="a11y-panel-header">
+              <DialogTitle as="h2" className="a11y-panel-title">
                 {t.title}
               </DialogTitle>
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label={t.closeMenu}
-                className="p-2 rounded-lg hover:bg-surface-container transition-colors text-on-surface-variant"
+                className="a11y-panel-close-btn"
               >
                 <span className="material-symbols-outlined" aria-hidden="true">close</span>
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto a11y-panel p-4 space-y-6">
-              <section>
-                <h3 className="text-xs font-label font-bold uppercase tracking-widest text-on-tertiary-container mb-3">
-                  {t.profiles}
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
+            <div className="a11y-panel-body a11y-panel">
+              <section className="a11y-section">
+                <h3 className="a11y-section-heading">{t.profiles}</h3>
+                <div className="a11y-profiles-grid">
                   {profiles.map((profile) => (
                     <button
                       key={profile.id}
                       onClick={() => applyProfile(profile.id)}
-                      className={`p-3 rounded-lg border transition-all ${
-                        activeProfile === profile.id
-                          ? "border-tertiary-fixed-dim bg-tertiary-fixed/20"
-                          : "border-outline-variant hover:border-tertiary-fixed-dim hover:bg-surface-container"
-                      }`}
+                      className={`a11y-profile-btn${activeProfile === profile.id ? " a11y-profile-btn--active" : ""}`}
                     >
-                      <span className="material-symbols-outlined text-xl mb-1 block text-on-tertiary-container" aria-hidden="true">
+                      <span className="material-symbols-outlined a11y-profile-icon" aria-hidden="true">
                         {profile.icon}
                       </span>
-                      <span className="text-xs font-bold block text-on-surface leading-tight">
+                      <span className="a11y-profile-label">
                         {t[profile.labelKey as keyof typeof t]}
                       </span>
-                      <span className="text-[10px] text-on-surface-variant leading-snug block mt-1">
+                      <span className="a11y-profile-desc">
                         {t[profile.descKey as keyof typeof t]}
                       </span>
                     </button>
@@ -202,31 +192,27 @@ export function AccessibilityToolbar({ locale = "en", translations, langMap }: A
               </section>
 
               {featureGroups.map((group) => (
-                <section key={group.id}>
-                  <h3 className="text-xs font-label font-bold uppercase tracking-widest text-on-tertiary-container mb-3">
+                <section key={group.id} className="a11y-section">
+                  <h3 className="a11y-section-heading">
                     {t[group.labelKey as keyof typeof t]}
                   </h3>
-                  <div className="space-y-2">
+                  <div className="a11y-feature-list">
                     {groupedFeatures[group.id].map((feature) => (
                       <button
                         key={feature.id}
                         onClick={() => toggleFeature(feature.id)}
                         role="switch"
                         aria-checked={settings[feature.id]}
-                        className={`w-full flex items-center gap-3 p-3 rounded-lg border transition-all ${
-                          settings[feature.id]
-                            ? "border-tertiary-fixed-dim bg-tertiary-fixed/20"
-                            : "border-transparent hover:bg-surface-container"
-                        }`}
+                        className={`a11y-feature-btn${settings[feature.id] ? " a11y-feature-btn--active" : ""}`}
                       >
-                        <span className="material-symbols-outlined text-xl text-on-surface-variant" aria-hidden="true">
+                        <span className="material-symbols-outlined a11y-feature-icon" aria-hidden="true">
                           {feature.icon}
                         </span>
-                        <span className="text-sm text-on-surface font-medium flex-1">
+                        <span className="a11y-feature-label">
                           {t[feature.labelKey as keyof typeof t]}
                         </span>
                         {settings[feature.id] && (
-                          <span className="material-symbols-outlined text-lg text-tertiary-fixed-dim" aria-hidden="true">
+                          <span className="material-symbols-outlined a11y-feature-check" aria-hidden="true">
                             check
                           </span>
                         )}
@@ -236,38 +222,36 @@ export function AccessibilityToolbar({ locale = "en", translations, langMap }: A
                 </section>
               ))}
 
-              <section>
-                <h3 className="text-xs font-label font-bold uppercase tracking-widest text-on-tertiary-container mb-3">
-                  {t.fontSizeLabel}
-                </h3>
-                <div className="flex items-center gap-3">
+              <section className="a11y-section">
+                <h3 className="a11y-section-heading">{t.fontSizeLabel}</h3>
+                <div className="a11y-font-controls">
                   <button
                     onClick={() => setFontSize(fontSize - FONT_SIZE_STEP)}
                     disabled={fontSize <= config.defaultFontSize}
                     aria-label={t.decreaseFontSize}
-                    className="flex-1 flex items-center justify-center p-3 rounded-lg border border-outline-variant hover:bg-surface-container transition-all disabled:opacity-40"
+                    className="a11y-font-btn"
                   >
-                    <span className="material-symbols-outlined text-lg" aria-hidden="true">text_decrease</span>
+                    <span className="material-symbols-outlined" style={{ fontSize: "1.125rem" }} aria-hidden="true">text_decrease</span>
                   </button>
-                  <span className="text-sm font-label font-bold text-on-surface-variant min-w-[3rem] text-center">
+                  <span className="a11y-font-size-display">
                     {Math.round(fontSize * 100)}%
                   </span>
                   <button
                     onClick={() => setFontSize(fontSize + FONT_SIZE_STEP)}
                     disabled={fontSize >= config.maxFontSize}
                     aria-label={t.increaseFontSize}
-                    className="flex-1 flex items-center justify-center p-3 rounded-lg border border-outline-variant hover:bg-surface-container transition-all disabled:opacity-40"
+                    className="a11y-font-btn"
                   >
-                    <span className="material-symbols-outlined text-lg" aria-hidden="true">text_increase</span>
+                    <span className="material-symbols-outlined" style={{ fontSize: "1.125rem" }} aria-hidden="true">text_increase</span>
                   </button>
                 </div>
               </section>
             </div>
 
-            <div className="p-4 border-t border-outline-variant">
+            <div className="a11y-panel-footer">
               <button
                 onClick={resetAll}
-                className="w-full py-3 rounded-lg border-2 border-on-surface-variant/30 text-on-surface-variant font-label font-bold text-sm uppercase tracking-widest hover:bg-surface-container transition-all"
+                className="a11y-reset-btn"
               >
                 {t.resetAll}
               </button>
